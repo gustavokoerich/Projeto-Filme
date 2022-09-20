@@ -13,7 +13,7 @@ class Filme(models.Model):
     nome = models.CharField(max_length=30)
     ano_lancamento = models.IntegerField()
     idade = models.IntegerField()
-    tempo = models.TimeField()
+    tempo = models.TextField()
     sinopse = models.CharField(max_length=450)
     imagem_pequena = models.URLField()
     imagem_grande = models.URLField()

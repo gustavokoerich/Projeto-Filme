@@ -1,10 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'filmes/owl/carrosel.css' %}">
+    <link rel="stylesheet" href="{% static 'filmes/owl/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'filmes/nav.css' %}">
+    <title>AG+</title>
+    <link rel="stylesheet" href="{% static 'filmes/main.css' %}">
+    <link rel="stylesheet" href="{% static 'filmes/responsive.css' %}">
+    <style>
+        .filme-principal{
+            background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%), url('https://cafecomnerd.com.br/wp-content/uploads/2022/06/Adao-Negro-Trailer-Dwayne-Johnson-super-heroi-DC-da-New-Line-Cinema-dirigido-por-Jaume-Collet-Serra.jpg');
+            height: 700px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Teste</h1>
+{% include 'partials/nav.html' %}
+    <main>
+        <div class="filme-principal">
+            <div class="container">
+                <h3 class="titulo">ADÃO NEGRO</h3>
+                <p class="descricao">O poderoso Adão Negro é libertado de sua tumba para lançar sua justiça cruel sob a Terra.</p>
+                <div class="botoes">
+                    <a href="https://www.youtube.com/watch?v=HluMG9tJXHM" target="_blank    "><button role="button" class="botao">
+                        <i class="fas fa-play"></i>TRAILER
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="carrosel-filmes">
+        <div class="owl-carousel owl-theme">
+            {% for i in filmes %}
+            <div class="item">
+                <button><a href="{% url 'informacao' i.id %}"><img class="box-filme" src="{{ i.imagem_pequena }}" alt="{{ i.nome }}"></a></button>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/0d70bf7cb0.js" crossorigin="anonymous"></script>
+    <script src="{% static 'filmes/js/jquery.min.js' %}"></script>
+    <script src="{% static 'filmes/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'filmes/js/setup.js' %}"></script>
 </body>
 </html>
